@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="drrhd">
-      <change afterPath="$PROJECT_DIR$/http_server_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/http.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="middle 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,11 +107,20 @@
       <option name="project" value="LOCAL‎" />
       <updated>1791813339064</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL‎-00002" summary="middle 4">
+      <option name="closed" value="true" />
+      <created>1792047226435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1792047226435</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="drrhd" />
-    <option name="LAST_COMMIT_MESSAGE" value="drrhd" />
+    <MESSAGE value="middle 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="middle 4" />
   </component>
 </project>
