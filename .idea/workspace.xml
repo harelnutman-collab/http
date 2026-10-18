@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="middle 4">
-      <change afterPath="$PROJECT_DIR$/my_first_web.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/http.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="basic server" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,12 +117,30 @@
       <option name="project" value="LOCAL‎" />
       <updated>1792047226435</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="html">
+      <option name="closed" value="true" />
+      <created>1792215116173</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1792215116173</updated>
+    </task>
+    <task id="LOCAL-00004" summary="basic server">
+      <option name="closed" value="true" />
+      <created>1792215158174</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1792215158174</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="drrhd" />
     <MESSAGE value="middle 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="middle 4" />
+    <MESSAGE value="html" />
+    <MESSAGE value="basic server" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic server" />
   </component>
 </project>
