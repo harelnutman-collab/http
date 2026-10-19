@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="basic server">
+      <change beforePath="$PROJECT_DIR$/.idea/http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/http.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http_server_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_web.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_web.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +32,12 @@
     &quot;assignee&quot;: &quot;harelnutman-collab&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/harelnutman-collab/http.git",
-    "accountId": "8b25fe94-ad70-41c0-9a5c-4b5aa8672469"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/harelnutman-collab/http.git&quot;,
+    &quot;accountId&quot;: &quot;8b25fe94-ad70-41c0-9a5c-4b5aa8672469&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>

@@ -68,6 +68,8 @@ server_sock = socket.socket()
 server_sock.bind(("0.0.0.0", 80)) # 8080
 server_sock.listen(3)
 
+do_not_touch_files = ["C:/Users/adipe/Downloads/htmlPic.png", "C:/Users/adipe/Downloads/1.txt"] # files that not valid to get
+moved_files = {"C:/Users/adipe/Downloads/client_image.py" : "C:/Users/adipe/Downloads/server_image.py"} # files that were moved
 while True:
     client_sock, addr = server_sock.accept()
     print(f"{addr[0]} - connected")
@@ -87,14 +89,24 @@ while True:
         print(url)
 
         if url == '':
-            send_file("my_first_web.html")
-        elif os.path.exists(url):
+            send_file("my_first_web.html") # the html to open
+            continue # back to while
+        elif os.path.exists(url) and url not in do_not_touch_files and url not in moved_files:
             send_file(url)
+            continue # back to while
+        elif url in do_not_touch_files:
+            msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = forbidden message
+        elif url in moved_files:
+            new_location = moved_files[url]
+            msg = f"HTTP/1.1 301 Moved Permanently\r\nLocation: {new_location}\r\nContent - Length: {str(len(url))}\r\n\r\n"  # msg = file moved message
+        elif url == 'server':
+            msg = f"HTTP/1.1 500 Internal Server Error\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = server message
         else:
-            error = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(url))}\r\n\r\n"
-            try:
-                send_data(client_sock, 1, error)
-            except Exception as e:
-                print(f"error in send {str(e)}")
+            msg = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = file not found message
+
+        try:
+            send_data(client_sock, 2, msg)
+        except Exception as e:
+            print(f"error in send {str(e)}")
 
         client_sock.close()
