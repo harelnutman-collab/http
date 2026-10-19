@@ -1,6 +1,7 @@
+#git link = https://github.com/harelnutman-collab/http
 import socket
 import os
-from flask import abort
+
 
 
 def send_data(client, data_len_byte, data):
@@ -25,9 +26,29 @@ def get_url(answer):
     :param answer: the request
     :return: the URL
     """
-    lines = answer.split('\r\n')[0]
-    return lines.split(' ')[1][1: ]
 
+    lines = answer.split('\r\n')[0]
+    if lines.split(' ')[1] == "/":
+        url_data = ''
+    else:
+        url_data = lines.split(' ')[1][1: ]
+    return url_data
+
+
+def send_file(file_name):
+    """
+    the func send file to client
+    :param file_name: the file name
+    :return: none
+    """
+    with open(file_name, 'rb') as file:
+        file_data = file.read()
+
+    answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(file_data))}\r\n\r\n".encode() + file_data
+    try:
+        send_data(client_sock, 6, answer)
+    except Exception as e:
+        print(f"error in sending {str(e)}")
 
 def check_get_packet(answer):
     """
@@ -64,24 +85,15 @@ while True:
 
         url = get_url(data)
         print(url)
-        if os.path.exists(url):
-            # answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(url))}\r\n\r\n{url}"
-            # try:
-            #     data = client_sock.send(answer.encode())
-            # except Exception as e:
-            #     print(f"error in send {str(e)}")
-            with open(url, 'rb') as file:
-                image_data = file.read()
 
-            answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(image_data))}\r\n\r\n".encode() + image_data
-            try:
-                send_data(client_sock, 6, answer)
-            except Exception as e:
-                print(f"error in sending {str(e)}")
+        if url == '':
+            send_file("my_first_web.html")
+        elif os.path.exists(url):
+            send_file(url)
         else:
-            error = "404 / File Not Found"
+            error = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(url))}\r\n\r\n"
             try:
-                client_sock.send(error.encode())
+                send_data(client_sock, 1, error)
             except Exception as e:
                 print(f"error in send {str(e)}")
 
