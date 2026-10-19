@@ -1,5 +1,23 @@
 import socket
 import os
+from flask import abort
+
+
+def send_data(client, data_len_byte, data):
+    """
+    the func send to the client data from server and length
+    :param client: where to send
+    :param data_len_byte: message len
+    :param data:the data to send
+    :return:none
+    """
+    if type(data) == str:
+        data = data.encode()
+    try:
+        client.send(data)
+    except Exception as e:
+        print(f"error in recv/send try again {str(e)}")
+
 
 def get_url(answer):
     """
@@ -47,11 +65,19 @@ while True:
         url = get_url(data)
         print(url)
         if os.path.exists(url):
-            answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(url))}\r\n\r\n{url}"
+            # answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(url))}\r\n\r\n{url}"
+            # try:
+            #     data = client_sock.send(answer.encode())
+            # except Exception as e:
+            #     print(f"error in send {str(e)}")
+            with open(url, 'rb') as file:
+                image_data = file.read()
+
+            answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(image_data))}\r\n\r\n".encode() + image_data
             try:
-                data = client_sock.send(answer.encode())
+                send_data(client_sock, 6, answer)
             except Exception as e:
-                print(f"error in send {str(e)}")
+                print(f"error in sending {str(e)}")
         else:
             error = "404 / File Not Found"
             try:
