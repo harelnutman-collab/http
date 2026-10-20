@@ -111,8 +111,16 @@ while True:
                     continue
             num += 1
             msg = str(num)
-        #elif 'calculate-area?height=' in url and '&width=':
+        #elif 'calculate-area?' in url :
+        #    first_split = str(url.split('?')[1])
+        #    second_split = str(first_split.split('&'))
+        #    dict_params = {}
 
+        #    for second_split in dict_params:
+        #        key, value = second_split('=')
+        #        dict_params[key] = float(value)
+
+        #    height = int(dict_params[])
         elif url in do_not_touch_files:
             msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = forbidden message
         elif url in moved_files:
