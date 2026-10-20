@@ -88,11 +88,19 @@ while True:
         print(url)
 
         if url == '':
-            send_file("my_first_web.html") # the html to open
-            continue # back to while
+            try:
+                send_file("my_first_web.html") # the html to open
+                continue # back to while
+            except Exception as e:
+                print(f"error in send - {str(e)}")
+                continue
         elif os.path.exists(url) and url not in do_not_touch_files and url not in moved_files:
-            send_file(url)
-            continue # back to while
+            try:
+                send_file(url)
+                continue # back to while
+            except Exception as e:
+                print(f"error in send - {str(e)}")
+                continue
         elif url == 'calculate-next':
             msg = '5'
         elif 'calculate-next?num=' in url:
@@ -107,20 +115,38 @@ while True:
                     send_data(client_sock, 2, msg)
                     continue
                 except Exception as e:
-                    print(f"error in send {str(e)}")
+                    print(f"error in send - {str(e)}")
                     continue
             num += 1
             msg = str(num)
-        #elif 'calculate-area?' in url :
-        #    first_split = str(url.split('?')[1])
-        #    second_split = str(first_split.split('&'))
-        #    dict_params = {}
-
-        #    for second_split in dict_params:
-        #        key, value = second_split('=')
-        #        dict_params[key] = float(value)
-
-        #    height = int(dict_params[])
+        elif 'calculate-area?' in url :
+            first_split = url.split('?')[1]
+            print(first_split)
+            try:
+                second_split = first_split.split('&')
+            except Exception as e:
+                print(f"not valid input - {str(e)}")
+                msg = "not valid input please put - '&' between the params"
+                try:
+                    send_data(client_sock, 2, msg)
+                    continue
+                except Exception as e:
+                    print(f"error in send - {str(e)}")
+                    continue
+            print(second_split)
+            try:
+                height = float(second_split[0].split("=")[1])
+                width = float(second_split[1].split("=")[1])
+            except Exception as e:
+                print(f"does not a number - {str(e)}")
+                msg = "please enter only numbers!!!"
+                try:
+                    send_data(client_sock, 2, msg)
+                    continue
+                except Exception as e:
+                    print(f"error in send - {str(e)}")
+                    continue
+            msg = str((width*height)/2)
         elif url in do_not_touch_files:
             msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = forbidden message
         elif url in moved_files:
