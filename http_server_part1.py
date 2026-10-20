@@ -67,7 +67,7 @@ server_sock = socket.socket()
 server_sock.bind(("0.0.0.0", 80)) # 8080
 server_sock.listen(3)
 
-do_not_touch_files = ["C:/Users/adipe/Downloads/htmlPic.png", "C:/Users/adipe/Downloads/1.txt"] # files that not valid to get
+do_not_touch_files = ["C:/Users/adipe/Downloads/1.txt"] # files that not valid to get
 moved_files = {"C:/Users/adipe/Downloads/client_image.py" : "C:/Users/adipe/Downloads/server_image.py"} # files that were moved
 while True:
     client_sock, addr = server_sock.accept()
