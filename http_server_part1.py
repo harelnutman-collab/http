@@ -3,7 +3,7 @@ import socket
 import os
 
 
-def send_data(client, data_len_byte, data):
+def send_data(client, data):
     """
     the func send to the client data from server and length
     :param client: where to send
@@ -45,7 +45,7 @@ def send_file(file_name):
 
     answer = f"HTTP/1.1 200 OK\r\nContent - Length: {str(len(file_data))}\r\n\r\n".encode() + file_data
     try:
-        send_data(client_sock, 6, answer)
+        send_data(client_sock,  answer)
     except Exception as e:
         print(f"error in sending {str(e)}")
 
@@ -104,7 +104,7 @@ while True:
             msg = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = file not found message
 
         try:
-            send_data(client_sock, 2, msg)
+            send_data(client_sock,  msg)
         except Exception as e:
             print(f"error in send {str(e)}")
 
