@@ -94,14 +94,18 @@ while True:
             send_file(url)
             continue # back to while
         elif url in do_not_touch_files:
-            msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = forbidden message
+            error_msg = "403 Forbidden"
+            msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(error_msg))}\r\n\r\n" # msg = forbidden message
         elif url in moved_files:
             new_location = moved_files[url]
-            msg = f"HTTP/1.1 301 Moved Permanently\r\nLocation: {new_location}\r\nContent - Length: {str(len(url))}\r\n\r\n"  # msg = file moved message
+            error_msg = "301 Moved Permanently"
+            msg = f"HTTP/1.1 301 Moved Permanently\r\nLocation: {new_location}\r\nContent - Length: {str(len(error_msg))}\r\n\r\n"  # msg = file moved message
         elif url == 'server':
-            msg = f"HTTP/1.1 500 Internal Server Error\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = server message
+            error_msg = "500 Internal Server"
+            msg = f"HTTP/1.1 500 Internal Server Error\r\nContent - Length: {str(len(error_msg))}\r\n\r\n" # msg = server message
         else:
-            msg = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = file not found message
+            error_msg = "404 Not Found"
+            msg = f"HTTP/1.1 404 Not Found\r\nContent - Length: {str(len(error_msg))}\r\n\r\n" # msg = file not found message
 
         try:
             send_data(client_sock,  msg)
