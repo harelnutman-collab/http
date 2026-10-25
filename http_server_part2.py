@@ -124,6 +124,7 @@ while True:
             print(first_split)
             try:
                 second_split = first_split.split('&')
+                print(second_split)
             except Exception as e:
                 print(f"not valid input - {str(e)}")
                 msg = "not valid input please put - '&' between the params"
@@ -133,20 +134,50 @@ while True:
                 except Exception as e:
                     print(f"error in send - {str(e)}")
                     continue
-            print(second_split)
-            try:
-                height = float(second_split[0].split("=")[1])
-                width = float(second_split[1].split("=")[1])
-            except Exception as e:
-                print(f"does not a number - {str(e)}")
-                msg = "please enter only numbers!!!"
+            params_dict = {}
+            not_valid = False
+            for param in second_split:
+                if '=' in param:
+                    key, value = param.split('=')
+                    if key in params_dict:
+                        msg = 'not valid input, check yourself!!!'
+                        try:
+                            send_data(client_sock, 2, msg)
+                            not_valid = True
+                            break
+                        except Exception as e:
+                            print(f"error in send - {str(e)}")
+                            not_valid = True
+                            break
+
+                    params_dict[key] = value
+
+            if  not not_valid and len(params_dict) == 2 and "height" in params_dict and "width" in params_dict:
                 try:
-                    send_data(client_sock, 2, msg)
-                    continue
+                    height = float(params_dict['height'])
+                    width = float(params_dict['width'])
                 except Exception as e:
-                    print(f"error in send - {str(e)}")
+                    print(f"does not a number - {str(e)}")
+                    msg = "please enter only numbers!!!"
+                    try:
+                        send_data(client_sock, 2, msg)
+                        continue
+                    except Exception as e:
+                        print(f"error in send - {str(e)}")
+                        continue
+                msg = str((width * height) / 2)
+            else:
+                if not not_valid:
+                    msg = 'not valid input, check yourself!!!'
+                    try:
+                        send_data(client_sock, 2, msg)
+                        continue
+                    except Exception as e:
+                        print(f"error in send - {str(e)}")
+                        continue
+                else:
+                    client_sock.close()
                     continue
-            msg = str((width*height)/2)
         elif url in do_not_touch_files:
             msg = f"HTTP/1.1 403 Forbidden\r\nContent - Length: {str(len(url))}\r\n\r\n" # msg = forbidden message
         elif url in moved_files:
