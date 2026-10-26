@@ -3,7 +3,7 @@ import socket
 import os
 
 
-def send_data(client, data_len_byte, data):
+def send_data(client, data):
     """
     the func send to the client data from server and length
     :param client: where to send
