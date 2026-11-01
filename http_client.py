@@ -30,7 +30,8 @@ msg = "choose:\n1 - secret message\nchoose: "
 
 while True:
     func = input(msg)
-
+    if func == '9':
+        break
     if func == '1':
         secret_msg = input("enter message: ")
         msg_to_send = f"POST /http_server_part3?secret HTTP/1.1\r\nContent-Length: {len(secret_msg)}\r\n\r\n{secret_msg}"
@@ -39,3 +40,5 @@ while True:
         except Exception as e:
             print(f"error in send - {str(e)}")
             my_sock.close()
+my_sock.close()
+print("bye bye")

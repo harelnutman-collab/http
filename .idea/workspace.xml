@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="all work">
-      <change afterPath="$PROJECT_DIR$/http_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/http_server_part3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/http.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http_3_secret_words" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_server_part2.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http_server_part3.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +31,12 @@
     &quot;assignee&quot;: &quot;harelnutman-collab&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/harelnutman-collab/http.git&quot;,
-    &quot;accountId&quot;: &quot;a8c3282b-ae22-46b8-9372-f793f477194a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/harelnutman-collab/http.git",
+    "accountId": "46ebbcf1-0254-4573-a813-95e36f0d3b6b"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -49,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.http_client.executor": "Run",
-    "Python.http_server.executor": "Run",
-    "Python.http_server_part1.executor": "Run",
-    "Python.http_server_part2.executor": "Run",
-    "Python.http_server_part3.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.http_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.http_server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.http_server_part1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.http_server_part2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.http_server_part3.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.http_client">
     <configuration name="http_client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="http" />
