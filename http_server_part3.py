@@ -4,45 +4,33 @@ import os
 
 
 
-def read_secret_msg(client_sock,data):
-    """
-
-    :param data:
-    :return:
-    """
-    secret_msg_len = 0
-    secret = ""
-    lines = data.split('\r\n')
-    for line in lines[1:]:
-        if line.startswith("Content-Length:"):
-            secret_msg_len = int(line.split(":")[1])
-            break
-    if secret_msg_len > 0:
-        secret = data.split('\r\n\r\n')[1]
-        extra_len2read = secret_msg_len - len(secret)
-        if extra_len2read > 0:
-            try:
-                secret += client_sock.recv(extra_len2read).decode()
-            except Exception as e:
-                secret = ""
-                print(f"error in read - {str(e)}")
-    return secret
-
-
-def send_data(client, data):
+def send_data(client, data_len_byte, data):
     """
     the func send to the client data from server and length
     :param client: where to send
     :param data_len_byte: message len
     :param data:the data to send
     :return:none
-    """
+        """
     if type(data) == str:
         data = data.encode()
     try:
-        client.send(data)
+      client.send(str(len(data)).zfill(data_len_byte).encode())
+      client.send(data)
     except Exception as e:
         print(f"error in recv/send try again {str(e)}")
+
+def get_url_img(answer):
+    """
+    get the image name
+    :param answer: the url
+    :return: image name
+    """
+    lines = answer.split('\r\n')[0]
+    img_name = lines.split(' ')[1]
+    img_name = img_name.split('=')[1]
+    img_name = os.path.basename(img_name)
+    return img_name
 
 
 def get_url(answer):
@@ -106,6 +94,40 @@ def check_POST_packet(answer):
         valid=True
     return valid
 
+def recv_http_request(sock):
+    """reads the headers up to \r\n\r\n, then exactly Content-Length bytes of body"""
+    data = b''
+    while b'\r\n\r\n' not in data:
+        chunk = sock.recv(1024)
+        if not chunk:
+            return None, None
+        data += chunk
+    header, body = data.split(b'\r\n\r\n', 1)
+    header = header.decode()
+    length = 0
+    for line in header.split('\r\n')[1:]:
+        if line.lower().startswith('content-length:'):
+            length = int(line.split(':')[1])
+    while len(body) < length:
+        chunk = sock.recv(min(4096, length - len(body)))
+        if not chunk:
+            break
+        body += chunk
+    return header, body
+
+def save_image(img_name, img_data):
+    """
+    save the image data (bytes) to a file in the images folder
+    :param img_name: the image file name
+    :param img_data: the image content (bytes) - the body of the POST
+    :return: None
+    """
+    os.makedirs("images_http_3", exist_ok=True)
+    with open(os.path.join("images_http_3", img_name), "wb") as f:
+        f.write(img_data)
+    with open("http_3_images", "a") as f2:
+        f2.write(img_name + "\n")
+
 
 
 server_sock = socket.socket()
@@ -119,12 +141,21 @@ while True:
     print(f"{addr[0]} - connected")
     while True:
         try:
-            data = client_sock.recv(1024).decode()
+            header, body = recv_http_request(client_sock)
         except Exception as e:
             print(f"error in recv {str(e)}")
+            header, body = None, None
+        if header is None:
             client_sock.close()
-            continue
+            print("disconnected")
+            break
+        data = header + '\r\n\r\n'  # text only: the headers
+        print(f"data - {header}")
 
+        valid = check_GET_POST_packet(data)
+        if not valid:
+            client_sock.close()
+            break
         print(f"data - {data}")
 
         valid = check_GET_POST_packet(data)
@@ -250,12 +281,16 @@ while True:
 
             if not 'http_server_part3' in url:
                 client_sock.close()
+                break
 
             elif url == 'http_server_part3?secret':
-                secret = read_secret_msg(client_sock, data)
+                secret = body.decode()
                 print(secret)
-                with open("http_3_secret_words", "r") as f:
-                    msg = f.read()
-                with open("http_3_secret_words", "w") as file:
-                    file.write(msg+secret+"\n")
+                with open("http_3_secret_words", "a") as file:
+                    file.write(secret+"\n")
 
+            elif 'http_server_part3?img_name=' in url:
+                img_name = get_url_img(data)
+                print(img_name)
+
+                save_image(img_name, body)

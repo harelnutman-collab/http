@@ -3,21 +3,21 @@ import socket
 import os
 
 
-def send_data(client, data):
+def send_data(client, data_len_byte, data):
     """
     the func send to the client data from server and length
     :param client: where to send
     :param data_len_byte: message len
     :param data:the data to send
     :return:none
-    """
+        """
     if type(data) == str:
         data = data.encode()
     try:
-        client.send(data)
+      client.send(str(len(data)).zfill(data_len_byte).encode())
+      client.send(data)
     except Exception as e:
         print(f"error in recv/send try again {str(e)}")
-
 
 def get_url(answer):
     """
