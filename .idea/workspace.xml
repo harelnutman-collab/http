@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b847d402-d7e8-4e6c-9220-b8539b451844" name="Changes" comment="all work">
-      <change afterPath="$PROJECT_DIR$/http_3_images" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/http.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_3_secret_words" beforeDir="false" afterPath="$PROJECT_DIR$/http_3_secret_words" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_server_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_server_part2.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http_server_part3.py" beforeDir="false" afterPath="$PROJECT_DIR$/http_server_part3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792592790851</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="all work">
+      <option name="closed" value="true" />
+      <created>1793824649711</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1793824649711</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

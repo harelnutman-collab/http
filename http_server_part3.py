@@ -94,11 +94,15 @@ def check_POST_packet(answer):
         valid=True
     return valid
 
-def recv_http_request(sock):
-    """reads the headers up to \r\n\r\n, then exactly Content-Length bytes of body"""
+def recv_http_request(answer):
+    """
+    the func do recv till nothing remain
+    :param answer: the data from client
+    :return: headers and body
+    """
     data = b''
     while b'\r\n\r\n' not in data:
-        chunk = sock.recv(1024)
+        chunk = answer.recv(1024)
         if not chunk:
             return None, None
         data += chunk
@@ -109,7 +113,7 @@ def recv_http_request(sock):
         if line.lower().startswith('content-length:'):
             length = int(line.split(':')[1])
     while len(body) < length:
-        chunk = sock.recv(min(4096, length - len(body)))
+        chunk = answer.recv(min(4096, length - len(body)))
         if not chunk:
             break
         body += chunk
